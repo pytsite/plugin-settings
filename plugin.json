@@ -1,0 +1,26 @@
+{
+  "name": "settings",
+  "version": "1.0",
+  "description": {
+    "en": "Settings",
+    "ru": "Настройки",
+    "uk": "Налаштунки"
+  },
+  "url": "https://github.com/pytsite/plugin-settings",
+  "author": {
+    "name": "Alexander Shepetko",
+    "email": "a@shepetko.com",
+    "url": "https://shepetko.com"
+  },
+  "requires": {
+    "packages": [],
+    "plugins": [
+      "admin",
+      "auth",
+      "form",
+      "odm",
+      "permissions",
+      "widget"
+    ]
+  }
+}
