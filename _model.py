@@ -1,4 +1,4 @@
-"""PytSite Settings Plugin Models
+"""PytSite Settings Plugin Data Models
 """
 from plugins import odm as _odm
 

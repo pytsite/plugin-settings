@@ -2,7 +2,7 @@
 """
 import re as _re
 from pytsite import router as _router, lang as _lang, http as _http, util as _util, validation as _validation, \
-    events as _events
+    events as _events, reg as _reg
 from plugins import widget as _widget, form as _form, auth as _auth
 from . import _api
 
@@ -34,7 +34,7 @@ class Form(_form.Form):
         _events.fire('settings.form.setup_widgets.' + self._setting_uid, frm=self)
 
         # Fill form widgets with values
-        for k, v in _api.get(self._setting_uid).items():
+        for k, v in _reg.get(self._setting_uid).items():
             try:
                 self.get_widget('setting_' + k).value = v
             except _form.error.WidgetNotExist:
@@ -73,7 +73,7 @@ class Form(_form.Form):
                 setting_value[k] = v
 
         # Update settings
-        _api.put(setting_uid, _util.dict_merge(_api.get(setting_uid), setting_value))
+        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid), setting_value))
 
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
 

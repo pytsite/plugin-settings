@@ -1,7 +1,6 @@
 """PytSite Settings Plugin Event Handlers
 """
-from pytsite import lang as _lang, metatag as _metatag, router as _router
-from . import _api
+from pytsite import lang as _lang, metatag as _metatag, router as _router, reg as _reg
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -9,7 +8,7 @@ __license__ = 'MIT'
 
 
 def on_dispatch():
-    settings = _api.get('app')
+    settings = _reg.get('app')
 
     # Add meta tags for home page
     if _router.is_base_url():

@@ -10,7 +10,7 @@ __license__ = 'MIT'
 
 
 class Form(_routing.Controller):
-    """Render settings form
+    """Settings Form Page
     """
 
     def exec(self) -> str:
