@@ -25,7 +25,7 @@ class Registry(reg.driver.Abstract):
 
         setting_value = dict(entity.f_get('value'))
 
-        return setting_value[key[1]] if key_split_len == 2 else setting_value
+        return setting_value.get(key[1]) if key_split_len == 2 else setting_value
 
     def _put(self, key: str, value: _Any):
         """Set setting's value
