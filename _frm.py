@@ -30,11 +30,11 @@ class Form(_form.Form):
     def _on_setup_widgets(self):
         """Hook
         """
-        _events.fire('settings.form.setup_widgets', frm=self)
-        _events.fire('settings.form.setup_widgets.' + self._setting_uid, frm=self)
+        _events.fire('settings@form.setup_widgets', frm=self)
+        _events.fire('settings@form.setup_widgets.' + self._setting_uid, frm=self)
 
         # Fill form widgets with values
-        for k, v in _reg.get(self._setting_uid).items():
+        for k, v in _reg.get(self._setting_uid, {}).items():
             try:
                 self.get_widget('setting_' + k).value = v
             except _form.error.WidgetNotExist:
@@ -73,7 +73,7 @@ class Form(_form.Form):
                 setting_value[k] = v
 
         # Update settings
-        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid), setting_value))
+        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid, {}), setting_value))
 
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
 

@@ -1,15 +1,18 @@
 """PytSite Settings Plugin
 """
-# Public API
-from ._api import is_defined, define, form_url
-from ._frm import Form
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
+from pytsite import plugman as _plugman
 
-def _init():
+if _plugman.is_installed(__name__):
+    # Public API
+    from ._api import is_defined, define, form_url
+    from ._frm import Form
+
+
+def plugin_load():
     from pytsite import reg, lang, router
     from plugins import permissions, odm, admin
     from . import _api, _model, _controllers, _frm, _eh, _driver
@@ -36,6 +39,3 @@ def _init():
 
     # Event handlers
     router.on_dispatch(_eh.on_dispatch)
-
-
-_init()
