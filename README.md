@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.2.1 (2017-12-19)
+
+Empty settings issue fixed.
+
+
 ### 1.2 (2017-12-13)
 
 Support for PytSite-7.0.

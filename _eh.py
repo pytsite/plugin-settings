@@ -11,7 +11,7 @@ def on_dispatch():
     settings = _reg.get('app')
 
     # Add meta tags for home page
-    if _router.is_base_url():
+    if settings and _router.is_base_url():
         lng = _lang.get_current()
         for s_key in ['title', 'description', 'keywords']:
             s_full_key = 'home_{}_{}'.format(s_key, lng)
