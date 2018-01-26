@@ -1,12 +1,12 @@
 """PytSite Settings Plugin Registry Driver
 """
-from typing import Any as _Any
-from pytsite import reg
-from plugins import odm as _odm
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from typing import Any as _Any
+from pytsite import reg
+from plugins import odm as _odm
 
 
 class Registry(reg.driver.Abstract):

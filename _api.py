@@ -1,13 +1,13 @@
 """PytSite Settings Plugin API Functions
 """
-from typing import Type as _Type
-from pytsite import router as _router
-from plugins import admin as _admin
-from . import _frm
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from typing import Type as _Type, Union as _Union
+from pytsite import router as _router
+from plugins import admin as _admin
+from . import _frm
 
 _settings = {}
 
@@ -18,28 +18,28 @@ def is_defined(uid: str) -> bool:
     return uid in _settings
 
 
-def define(uid: str, frm: _Type[_frm.Form], menu_title: str, menu_icon: str, permissions: str = '*',
-           menu_weight: int = 0):
+def define(uid: str, content: _Type[_frm.Form], title: str, icon: str,
+           roles: _Union[str, list, tuple] = ('admin', 'dev'), permissions: _Union[str, list, tuple] = None,
+           weight: int = 0):
     """Define a setting
     """
     if uid in _settings:
-        raise KeyError("Setting '{}' is already defined.".format(uid))
+        raise KeyError("Setting '{}' is already defined".format(uid))
 
     _settings[uid] = {
-        'title': menu_title,
-        'form': frm,
-        'perm_name': permissions,
+        'title': title,
+        'content': content,
     }
 
-    url = _router.rule_path('settings@form', {'uid': uid})
-    _admin.sidebar.add_menu('settings', uid, menu_title, url, menu_icon, weight=menu_weight, permissions=permissions)
+    path = _router.rule_path('settings@get_form', {'uid': uid})
+    _admin.sidebar.add_menu('settings', uid, title, path, icon, weight=weight, roles=roles, permissions=permissions)
 
 
 def get_definition(uid: str) -> dict:
     """Get setting's definition
     """
     if uid not in _settings:
-        raise KeyError("Setting '{}' is not defined.".format(uid))
+        raise KeyError("Setting '{}' is not defined".format(uid))
 
     return _settings[uid]
 
@@ -47,4 +47,4 @@ def get_definition(uid: str) -> dict:
 def form_url(uid: str) -> str:
     """Get URL of a settings form
     """
-    return _router.rule_url('settings@form', {'uid': uid})
+    return _router.rule_url('settings@get_form', {'uid': uid})

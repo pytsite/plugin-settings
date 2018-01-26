@@ -1,10 +1,10 @@
 """PytSite Settings Plugin Event Handlers
 """
-from pytsite import lang as _lang, metatag as _metatag, router as _router, reg as _reg
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from pytsite import lang as _lang, metatag as _metatag, router as _router, reg as _reg
 
 
 def on_dispatch():

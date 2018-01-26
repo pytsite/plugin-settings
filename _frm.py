@@ -1,14 +1,11 @@
 """PytSite Settings Plugin Forms
 """
-import re as _re
-from pytsite import router as _router, lang as _lang, http as _http, util as _util, validation as _validation, \
-    events as _events, reg as _reg
-from plugins import widget as _widget, form as _form, auth as _auth
-from . import _api
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from pytsite import router as _router, lang as _lang, validation as _validation, events as _events, reg as _reg
+from plugins import widget as _widget, form as _form
 
 
 class Form(_form.Form):
@@ -22,6 +19,7 @@ class Form(_form.Form):
 
         kwargs.update({
             'name': 'settings-' + self._setting_uid,
+            'action': _router.rule_url('settings@post_form', {'uid': self._setting_uid}),
             'css': 'settings-form setting-uid-' + self._setting_uid,
         })
 
@@ -48,36 +46,6 @@ class Form(_form.Form):
             href=_router.rule_url('admin@dashboard'),
             form_area='footer',
         ))
-
-    def _on_submit(self):
-        setting_uid = self._setting_uid
-
-        user = _auth.get_current_user()
-        setting_def = _api.get_definition(setting_uid)
-
-        if setting_def['perm_name'] != '*' and not user.has_permission(setting_def['perm_name']):
-            raise _http.error.Forbidden("Current user does not have permission '{}'".format(setting_def['perm_name']))
-
-        # Extract all values who's name starts with 'setting_'
-        setting_value = {}
-        for k, v in self.values.items():
-            if k.startswith('setting_'):
-                k = _re.sub('^setting_', '', k)
-
-                if isinstance(v, (list, tuple)):
-                    v = _util.cleanup_list(v)
-
-                if isinstance(v, dict):
-                    v = _util.cleanup_dict(v)
-
-                setting_value[k] = v
-
-        # Update settings
-        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid, {}), setting_value))
-
-        _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
-
-        return _http.response.Redirect(_router.rule_url('settings@form', {'uid': setting_uid}))
 
 
 class Application(Form):

@@ -4,6 +4,13 @@
 ## Changelog
 
 
+### 1.3 (2018-01-26)
+
+- Permissions management refactored.
+- `setting@post_form` router rule added.
+- Ability to render arbitrary content as a form added.
+
+
 ### 1.2.1 (2017-12-19)
 
 Empty settings issue fixed.

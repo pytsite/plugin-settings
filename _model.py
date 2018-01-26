@@ -1,10 +1,10 @@
 """PytSite Settings Plugin Data Models
 """
-from plugins import odm as _odm
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from plugins import odm as _odm
 
 
 class Setting(_odm.model.Entity):
