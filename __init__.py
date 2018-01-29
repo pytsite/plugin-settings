@@ -26,15 +26,17 @@ def plugin_load():
 
 def plugin_load_uwsgi():
     from pytsite import router, tpl
-    from plugins import admin
+    from plugins import admin, auth_ui
     from . import _controllers, _eh
 
     tpl.register_package(__name__)
 
     # Routing
     abp = admin.base_path()
-    router.handle(_controllers.GetForm, abp + '/settings/<uid>', 'settings@get_form')
-    router.handle(_controllers.PostForm, abp + '/settings/<uid>', 'settings@post_form', methods='POST')
+    router.handle(_controllers.GetForm, abp + '/settings/<uid>', 'settings@get_form',
+                  filters=auth_ui.AuthFilterController)
+    router.handle(_controllers.PostForm, abp + '/settings/<uid>', 'settings@post_form', methods='POST',
+                  filters=auth_ui.AuthFilterController)
 
     # Admin sidebar's section
     admin.sidebar.add_section('settings', __name__ + '@settings', 2000, 'title')
