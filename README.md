@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.3.3 (2018-01-29)
+
+`plugin.json` fixed.
+
+
 ### 1.3.2 (2018-01-29)
 
 Missing authentication step fixed.
