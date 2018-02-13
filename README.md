@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.3.4 (2018-02-14)
+
+Form's values processing fixed.
+
+
 ### 1.3.3 (2018-01-29)
 
 `plugin.json` fixed.
