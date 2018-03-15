@@ -14,34 +14,31 @@ class Form(_form.Form):
     """Base settings form
     """
 
-    def __init__(self, **kwargs):
-        """Init
-        """
-        self._setting_uid = kwargs.get('setting_uid')
+    def _on_setup_form(self, **kwargs):
+        setting_uid = self.attr('setting_uid')
+        if not setting_uid:
+            raise ValueError('setting_uid is not defined')
 
-        kwargs.update({
-            'name': 'settings-' + self._setting_uid,
-            # 'action': _router.rule_url('settings@post_form', {'uid': self._setting_uid}),
-            'css': 'settings-form setting-uid-' + self._setting_uid,
-        })
-
-        super().__init__(**kwargs)
+        self.name = 'settings-' + setting_uid
+        self.css = 'settings-form setting-uid-' + setting_uid
 
     def _on_setup_widgets(self):
         """Hook
         """
+        setting_uid = self.attr('setting_uid')
+
         _events.fire('settings@form.setup_widgets', frm=self)
-        _events.fire('settings@form.setup_widgets.' + self._setting_uid, frm=self)
+        _events.fire('settings@form.setup_widgets.' + setting_uid, frm=self)
 
         # Fill form widgets with values
-        for k, v in _reg.get(self._setting_uid, {}).items():
+        for k, v in _reg.get(setting_uid, {}).items():
             try:
                 self.get_widget('setting_' + k).value = v
             except _form.error.WidgetNotExist:
                 pass
 
         self.add_widget(_widget.button.Link(
-            uid='action-cancel-' + str(self.step),
+            uid='action-cancel-' + str(self.current_step),
             weight=10,
             value=_lang.t('settings@cancel'),
             icon='fa fa-fw fa-ban',
@@ -50,6 +47,8 @@ class Form(_form.Form):
         ))
 
     def _on_submit(self):
+        setting_uid = self.attr('setting_uid')
+
         # Extract all values who's name starts with 'setting_'
         setting_value = {}
         for k, v in self.values.items():
@@ -65,12 +64,12 @@ class Form(_form.Form):
                 setting_value[k] = v
 
         # Update settings
-        _reg.put(self._setting_uid, _util.dict_merge(_reg.get(self._setting_uid, {}), setting_value))
+        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid, {}), setting_value))
 
         # Notify user
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
 
-        return _http.response.Redirect(_router.rule_url('settings@get_form', {'uid': self._setting_uid}))
+        return _http.response.Redirect(_router.rule_url('settings@get_form', {'uid': setting_uid}))
 
 
 class Application(Form):

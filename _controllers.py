@@ -22,7 +22,7 @@ class GetForm(_routing.Controller):
         # Update page's title
         _metatag.t_set('title', _lang.t(setting_def['title']))
 
-        content = setting_def['content'](setting_uid=uid)
+        content = setting_def['content'](attr_setting_uid=uid)
         if isinstance(content, _frm.Form):
             return _admin.render(_tpl.render('settings@form', {'form': content}))
         else:

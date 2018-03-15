@@ -1,6 +1,6 @@
 {
   "name": "settings",
-  "version": "1.3.4",
+  "version": "1.4",
   "description": {
     "en": "Settings",
     "ru": "Настройки",
@@ -17,7 +17,7 @@
       "admin>=1.3",
       "auth>=1.8",
       "auth_ui",
-      "form",
+      "form>=2.0.1",
       "odm",
       "permissions",
       "widget"
