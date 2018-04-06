@@ -38,7 +38,7 @@ class Form(_form.Form):
                 pass
 
         self.add_widget(_widget.button.Link(
-            uid='action-cancel-' + str(self.current_step),
+            uid='action_cancel-' + str(self.current_step),
             weight=10,
             value=_lang.t('settings@cancel'),
             icon='fa fa-fw fa-ban',
