@@ -50,7 +50,7 @@ class Form(_form.Form):
         setting_uid = self.attr('setting_uid')
 
         # Extract all values who's name starts with 'setting_'
-        setting_value = {}
+        setting_value = _reg.get(setting_uid, {})
         for k, v in self.values.items():
             if k.startswith('setting_'):
                 k = _re.sub('^setting_', '', k)
@@ -64,7 +64,7 @@ class Form(_form.Form):
                 setting_value[k] = v
 
         # Update settings
-        _reg.put(setting_uid, _util.dict_merge(_reg.get(setting_uid, {}), setting_value))
+        _reg.put(setting_uid, setting_value)
 
         # Notify user
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
