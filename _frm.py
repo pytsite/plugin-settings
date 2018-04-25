@@ -14,7 +14,7 @@ class Form(_form.Form):
     """Base settings form
     """
 
-    def _on_setup_form(self, **kwargs):
+    def _on_setup_form(self):
         setting_uid = self.attr('setting_uid')
         if not setting_uid:
             raise ValueError('setting_uid is not defined')

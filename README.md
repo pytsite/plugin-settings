@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.6 (2018-04-25)
+
+Support of `form-3.0`.
+
+
 ### 1.5.1 (2018-04-07)
 
 Processing of form's values fixed.
