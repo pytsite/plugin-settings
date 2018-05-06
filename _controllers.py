@@ -22,8 +22,10 @@ class GetForm(_routing.Controller):
         # Update page's title
         _metatag.t_set('title', _lang.t(setting_def['title']))
 
-        content = setting_def['content'](setting_uid=uid)
-        if isinstance(content, _frm.Form):
-            return _admin.render(_tpl.render('settings@form', {'form': content}))
+        content = setting_def['content']
+        if issubclass(content, _frm.Form):
+            return _admin.render(_tpl.render('settings@form', {'form': content(self.request, setting_uid=uid)}))
+        elif callable(content):
+            return _admin.render(content())
         else:
-            return _admin.render(content)
+            return content

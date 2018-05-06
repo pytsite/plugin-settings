@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.7 (2018-05-06)
+
+Support of `form-4.0` and PytSite-7.17.
+
+
 ### 1.6 (2018-04-25)
 
 Support of `form-3.0`.

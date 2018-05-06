@@ -34,7 +34,7 @@ class Form(_form.Form):
         for k, v in _reg.get(setting_uid, {}).items():
             try:
                 self.get_widget('setting_' + k).value = v
-            except _form.error.WidgetNotExist:
+            except _form.WidgetNotExistError:
                 pass
 
         self.add_widget(_widget.button.Link(
@@ -69,7 +69,7 @@ class Form(_form.Form):
         # Notify user
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
 
-        return _http.response.Redirect(_router.rule_url('settings@get_form', {'uid': setting_uid}))
+        return _http.RedirectResponse(_router.rule_url('settings@get_form', {'uid': setting_uid}))
 
 
 class Application(Form):
