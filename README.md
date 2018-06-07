@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.8 (2018-06-07)
+
+Support of `auth_ui-3.5`.
+
+
 ### 1.7 (2018-05-06)
 
 Support of `form-4.0` and PytSite-7.17.

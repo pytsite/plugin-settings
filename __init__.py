@@ -33,8 +33,7 @@ def plugin_load_uwsgi():
 
     # Routing
     abp = admin.base_path()
-    router.handle(_controllers.GetForm, abp + '/settings/<uid>', 'settings@get_form',
-                  filters=auth_ui.AuthFilterController)
+    router.handle(_controllers.GetForm, abp + '/settings/<uid>', 'settings@get_form', filters=auth_ui.AuthFilter)
 
     # Admin sidebar's section
     admin.sidebar.add_section('settings', __name__ + '@settings', 2000, 'title')
