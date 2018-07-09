@@ -19,7 +19,7 @@ class Form(_form.Form):
         if not setting_uid:
             raise ValueError('setting_uid is not defined')
 
-        self.name = 'settings-' + setting_uid
+        self.name = 'settings_' + setting_uid
         self.css = 'settings-form setting-uid-' + setting_uid
 
     def _on_setup_widgets(self):
@@ -41,7 +41,7 @@ class Form(_form.Form):
             uid='action_cancel-' + str(self.current_step),
             weight=10,
             value=_lang.t('settings@cancel'),
-            icon='fa fa-fw fa-ban',
+            icon='fa fa-fw fas fa-ban',
             href=_router.rule_url('admin@dashboard'),
             form_area='footer',
         ))

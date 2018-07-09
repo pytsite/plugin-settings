@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.8.1 (2018-07-09)
+
+Font Awesome 5 support fixed.
+
+
 ### 1.8 (2018-06-07)
 
 Support of `auth_ui-3.5`.
