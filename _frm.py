@@ -37,6 +37,7 @@ class Form(_form.Form):
             except _form.WidgetNotExistError:
                 pass
 
+        # "Cancel" button
         self.add_widget(_widget.button.Link(
             uid='action_cancel-' + str(self.current_step),
             weight=10,
@@ -45,6 +46,10 @@ class Form(_form.Form):
             href=_router.rule_url('admin@dashboard'),
             form_area='footer',
         ))
+
+        # "Save" button
+        submit_btn = self.get_widget('action_submit')
+        submit_btn.icon = 'fa fas fa-fw fa-save'
 
     def _on_submit(self):
         setting_uid = self.attr('setting_uid')
