@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.8.2 (2018-07-21)
+
+Support of Twitter Bootstrap 4 fixed.
+
+
 ### 1.8.1 (2018-07-09)
 
 Font Awesome 5 support fixed.

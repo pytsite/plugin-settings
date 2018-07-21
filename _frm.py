@@ -41,7 +41,7 @@ class Form(_form.Form):
             uid='action_cancel-' + str(self.current_step),
             weight=10,
             value=_lang.t('settings@cancel'),
-            icon='fa fa-fw fas fa-ban',
+            icon='fa fas fa-fw fa-ban',
             href=_router.rule_url('admin@dashboard'),
             form_area='footer',
         ))
