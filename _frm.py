@@ -47,10 +47,6 @@ class Form(_form.Form):
             form_area='footer',
         ))
 
-        # "Save" button
-        submit_btn = self.get_widget('action_submit')
-        submit_btn.icon = 'fa fas fa-fw fa-save'
-
     def _on_submit(self):
         setting_uid = self.attr('setting_uid')
 

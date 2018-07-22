@@ -3,6 +3,12 @@
 
 ## Changelog
 
+
+### 1.8.4 (2018-07-22)
+
+Form icons fix.
+
+
 ### 1.8.3 (2018-07-22)
 
 Form icons fix.
