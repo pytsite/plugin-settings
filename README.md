@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.9 (2018-07-29)
+
+Support of `form-4.7`.
+
+
 ### 1.8.4 (2018-07-22)
 
 Form icons fix.

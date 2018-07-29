@@ -40,7 +40,7 @@ class Form(_form.Form):
         # "Cancel" button
         self.add_widget(_widget.button.Link(
             uid='action_cancel-' + str(self.current_step),
-            weight=10,
+            weight=100,
             value=_lang.t('settings@cancel'),
             icon='fa fas fa-fw fa-ban',
             href=_router.rule_url('admin@dashboard'),
