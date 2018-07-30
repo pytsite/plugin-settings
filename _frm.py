@@ -6,7 +6,7 @@ __license__ = 'MIT'
 
 import re as _re
 from pytsite import router as _router, lang as _lang, validation as _validation, events as _events, reg as _reg, \
-    util as _util, http as _http
+    util as _util
 from plugins import widget as _widget, form as _form
 
 
@@ -70,7 +70,7 @@ class Form(_form.Form):
         # Notify user
         _router.session().add_success_message(_lang.t('settings@settings_has_been_saved'))
 
-        return _http.RedirectResponse(_router.rule_url('settings@get_form', {'uid': setting_uid}))
+        self.redirect = _router.rule_url('settings@get_form', {'uid': setting_uid})
 
 
 class Application(Form):
