@@ -1,6 +1,6 @@
 """PytSite Settings Plugin Forms
 """
-__author__ = 'Alexander Shepetko'
+__author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
@@ -39,7 +39,7 @@ class Form(_form.Form):
 
         # "Cancel" button
         self.add_widget(_widget.button.Link(
-            uid='action_cancel-' + str(self.current_step),
+            uid='action_cancel_' + str(self.current_step),
             weight=100,
             value=_lang.t('settings@cancel'),
             icon='fa fas fa-fw fa-ban',

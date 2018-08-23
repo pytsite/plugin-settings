@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.11 (2017-08-23)
+
+Support of `widget-2.12`.
+
+
 ### 1.10 (2018-07-30)
 
 Support of `form-4.8`.
