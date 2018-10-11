@@ -1,6 +1,6 @@
 {
   "name": "settings",
-  "version": "1.11",
+  "version": "2.0",
   "description": {
     "en": "Settings",
     "ru": "Настройки",
@@ -13,15 +13,15 @@
     "url": "https://shepetko.com"
   },
   "requires": {
-    "pytsite": ">=7.17",
-    "plugins": [
-      "admin>=1.3",
-      "auth>=1.8",
-      "auth_ui>=3.5",
-      "form>=4.8",
-      "odm",
-      "permissions",
-      "widget>=2.12"
-    ]
+    "pytsite": ">=8",
+    "plugins": {
+      "admin": "2.x",
+      "auth": "3.x",
+      "auth_ui": "4.x",
+      "form": "5.x",
+      "odm": "5.x",
+      "permissions": "1.x",
+      "widget": "3.x"
+    }
   }
 }

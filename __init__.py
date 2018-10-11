@@ -10,12 +10,9 @@ from ._frm import Form
 
 
 def plugin_load():
-    from pytsite import reg, lang
+    from pytsite import reg
     from plugins import odm
     from . import _api, _model, _frm, _driver
-
-    # Resources
-    lang.register_package(__name__)
 
     # ODM models
     odm.register_model('setting', _model.Setting)
@@ -24,12 +21,10 @@ def plugin_load():
     reg.set_driver(_driver.Registry(reg.get_driver()))
 
 
-def plugin_load_uwsgi():
-    from pytsite import router, tpl
+def plugin_load_wsgi():
+    from pytsite import router
     from plugins import admin, auth_ui
     from . import _controllers, _eh
-
-    tpl.register_package(__name__)
 
     # Routing
     abp = admin.base_path()
