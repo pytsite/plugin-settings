@@ -1,6 +1,6 @@
 {
   "name": "settings",
-  "version": "2.0",
+  "version": "2.1",
   "description": {
     "en": "Settings",
     "ru": "Настройки",
@@ -21,7 +21,7 @@
       "form": "5.x",
       "odm": "5.x",
       "permissions": "1.x",
-      "widget": "3.x"
+      "widget": "4.x"
     }
   }
 }
