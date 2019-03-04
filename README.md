@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 2.2 (2019-03-04)
+
+Support of `odm-6.0`.
+
+
 ### 2.1 (2018-10-22)
 
 Support of `widget-4.x`.
