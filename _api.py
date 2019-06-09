@@ -4,9 +4,9 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import Type as _Type, Union as _Union
-from pytsite import router as _router
-from plugins import admin as _admin
+from typing import Type, Union
+from pytsite import router
+from plugins import admin
 from . import _frm
 
 _settings = {}
@@ -18,8 +18,8 @@ def is_defined(uid: str) -> bool:
     return uid in _settings
 
 
-def define(uid: str, content: _Type[_frm.Form], title: str, icon: str,
-           roles: _Union[str, list, tuple] = ('admin', 'dev'), permissions: _Union[str, list, tuple] = None,
+def define(uid: str, content: Type[_frm.Form], title: str, icon: str,
+           roles: Union[str, list, tuple] = ('admin', 'dev'), permissions: Union[str, list, tuple] = None,
            weight: int = 0):
     """Define a setting
     """
@@ -31,8 +31,8 @@ def define(uid: str, content: _Type[_frm.Form], title: str, icon: str,
         'content': content,
     }
 
-    path = _router.rule_path('settings@get_form', {'uid': uid})
-    _admin.sidebar.add_menu('settings', uid, title, path, icon, weight=weight, roles=roles, permissions=permissions)
+    path = router.rule_path('settings@get_form', {'uid': uid})
+    admin.sidebar.add_menu('settings', uid, title, path, icon, weight=weight, roles=roles, permissions=permissions)
 
 
 def get_definition(uid: str) -> dict:
@@ -47,4 +47,4 @@ def get_definition(uid: str) -> dict:
 def form_url(uid: str) -> str:
     """Get URL of a settings form
     """
-    return _router.rule_url('settings@get_form', {'uid': uid})
+    return router.rule_url('settings@get_form', {'uid': uid})
